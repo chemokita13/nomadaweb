@@ -128,3 +128,12 @@
     @apply font-sans;
   }
 }
+
+
+@theme {
+  /* Le decimos a Tailwind v4 que la fuente "sans" es tu variable de Geist */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ... aquí debajo estará el resto de tu código CSS (colores de shadcn, etc) ... */

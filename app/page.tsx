@@ -1,4 +1,5 @@
 // app/page.tsx
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HeroCarousel } from "@/components/ui/hero-carousel";
@@ -25,25 +26,31 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col bg-[#fff8ed] text-[#4b271c]">
+    <main className="min-h-screen flex flex-col bg-[#FAFAF8] text-[#4A2B1D]">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pb-10 pt-16 text-center md:pb-14 md:pt-24">
-        <div className="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top,#ffd99f_0%,transparent_48%),linear-gradient(135deg,#fff8ed_0%,#f7d4a4_100%)]" />
+        <div className="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top,#F0D5C0_0%,transparent_48%),linear-gradient(135deg,#FAFAF8_0%,#FDF7ED_100%)]" />
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#c85b25]">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-[#C8734D]">
             Café & copas · Valladolid
           </p>
-          <h1 className="mb-4 font-heading text-5xl font-bold tracking-tight text-[#71301c] md:text-7xl">
-            Nómada
-          </h1>
-          <p className="mb-8 max-w-xl text-lg text-[#855d4b] md:text-xl">
+          <div className="relative mb-8 h-20 w-72 md:h-24 md:w-80">
+            <Image
+              src="/letras.png"
+              alt="Nómada Café & Copas"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <p className="mb-8 max-w-xl text-lg font-medium text-[#8B6453] md:text-xl">
             &quot;La única meta: Sentirse vivo más allá de estarlo&quot;. <br />
             Tapas, desayunos, batidos y los mejores cócteles en Valladolid.
           </p>
           <Link href="/carta" className="group">
             <Button
               size="lg"
-              className="rounded-full bg-[#a33d1f] px-8 text-lg text-[#fff8ed] shadow-md hover:bg-[#71301c]"
+              className="rounded-full bg-[#AF4A24] px-9 py-6 text-lg font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-[#8e3a1b] hover:shadow-xl"
             >
               Ver Carta Digital
             </Button>
@@ -57,15 +64,15 @@ export default function Home() {
       </section>
 
       {/* Value Proposition */}
-      <section className="border-y border-[#e5b77c] bg-[#f7d8ad] px-4 py-16">
+      <section className="border-y border-[#E6B999]/30 bg-[#FFF1E5] px-4 py-20">
         <div className="max-w-3xl mx-auto text-center space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c85b25]">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#C8734D]">
             Una pausa con sabor
           </p>
-          <h2 className="font-heading text-3xl font-semibold text-[#71301c]">
+          <h2 className="font-heading text-4xl font-black text-[#4A2B1D]">
             Mucho más que un bar
           </h2>
-          <p className="leading-relaxed text-[#855d4b]">
+          <p className="text-lg leading-relaxed font-medium text-[#8B6453]">
             Desde nuestros famosos desayunos hasta los vermús toreros que se
             alargan. En Nómada Café & Copas cuidamos cada detalle, cada
             ingrediente y cada copa para que tu única preocupación sea disfrutar

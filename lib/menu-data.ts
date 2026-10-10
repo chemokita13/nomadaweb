@@ -46,6 +46,7 @@ export const menuData: MenuCategory[] = [
         description: "Tosta de jamón ibérico, tomate y AOVE.",
         price: 5.0,
         allergens: ["gluten"],
+        photo_url: "/desayunos/2.jpg",
       },
       {
         name: "3. Español",
@@ -72,6 +73,7 @@ export const menuData: MenuCategory[] = [
           "Huevos Benedictine con bacon de pavo, jamón ibérico y salsa holandesa en base de patata.",
         price: 7.0,
         allergens: ["huevo", "lacteos"],
+        photo_url: "/desayunos/6.jpg",
       },
       {
         name: "7. Nómada",
@@ -91,7 +93,7 @@ export const menuData: MenuCategory[] = [
         name: "9. Nukak",
         description: "Bowl de macedonia de frutas de temporada con menta.",
         price: 5.5,
-        allergens: [],
+        allergens: ["gluten"],
         photo_url: "/desayunos/9.jpg",
       },
       {
@@ -117,12 +119,14 @@ export const menuData: MenuCategory[] = [
         description: "Tosta francesa con miel de flores, frutos rojos y fruta.",
         price: 5.5,
         allergens: ["gluten", "lacteos", "huevo"],
+        photo_url: "/desayunos/13.jpg",
       },
       {
         name: "14. Makú",
         description: "Crepe de dulce de leche, frutos rojos y azúcar glass.",
         price: 5.5,
         allergens: ["gluten", "lacteos", "huevo"],
+        photo_url: "/desayunos/14.jpg",
       },
       {
         name: "15. Hadza",
@@ -130,6 +134,7 @@ export const menuData: MenuCategory[] = [
           "Smoothie bowl con plátano, coco, mango, Corn Flakes y semillas de chía.",
         price: 5.5,
         allergens: ["gluten"],
+        photo_url: "/desayunos/15.jpg",
       },
       {
         name: "16. Awá",
@@ -150,6 +155,7 @@ export const menuData: MenuCategory[] = [
         description: "Tostada de guacamole, atún en AOVE y fresas.",
         price: 5.5,
         allergens: ["gluten", "pescado"],
+        photo_url: "/desayunos/18.jpg",
       },
       {
         name: "19. Yoruk",
@@ -215,6 +221,7 @@ export const menuData: MenuCategory[] = [
         description: "Tomate rayado y pan tostado",
         price: 15.0,
         allergens: ["gluten"],
+        photo_url: "/vermu/jamon.jpg",
       },
       {
         name: "Surtido humus",
@@ -227,12 +234,14 @@ export const menuData: MenuCategory[] = [
         description: "Clásica gilda con boquerón",
         price: 2.0,
         allergens: ["pescado"],
+        photo_url: "/vermu/gilda.jpg",
       },
       {
         name: "Huevos rotos",
         description: "Con jamón de bellota y base de patata",
         price: 10.0,
         allergens: ["huevo"],
+        photo_url: "/vermu/rotos.jpg",
       },
     ],
   },
@@ -250,6 +259,7 @@ export const menuData: MenuCategory[] = [
         description: "Bacardí, lima, hierbabuena y Organics Ginger",
         price: 7.0,
         allergens: [],
+        photo_url: "/copas/mojito.jpg",
       },
       {
         name: "Piña Colada",

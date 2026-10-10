@@ -10,9 +10,15 @@ import {
   Milk,
   Nut,
   Wheat,
+  ImageIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { menuData, type Allergen, type MenuCategory } from "@/lib/menu-data";
+import {
+  menuData,
+  type Allergen,
+  type MenuCategory,
+  type MenuItem,
+} from "@/lib/menu-data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -23,6 +29,102 @@ const allergenIcons: Record<Allergen, React.ReactNode> = {
   pescado: <Fish className="size-4" aria-label="Pescado" />,
   frutos_secos: <Nut className="size-4" aria-label="Frutos secos" />,
 };
+
+function MenuItemCard({ item }: { item: MenuItem }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <div className={`group relative w-full [perspective:1000px] ${isFlipped ? "" : "h-full"}`}>
+      <div
+        className={`relative w-full transition-all duration-700 [transform-style:preserve-3d] ${
+          isFlipped ? "[transform:rotateY(180deg)]" : "h-full"
+        }`}
+      >
+        {/* Front */}
+        <Card className={`flex flex-col overflow-hidden rounded-3xl border border-[#F0D5C0]/50 bg-white p-6 shadow-sm transition-all hover:shadow-md [backface-visibility:hidden] ${isFlipped ? "absolute inset-0" : "relative h-full"}`}>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h3 className="font-heading text-xl font-bold leading-tight text-[#4A2B1D]">
+                {item.name}
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-[#8B6453]">
+                {item.description}
+              </p>
+            </div>
+            <div className="shrink-0 rounded-2xl bg-[#FFF1E5] px-3.5 py-1.5 text-[#AF4A24]">
+              <span className="whitespace-nowrap text-lg font-black tracking-tight">
+                {item.price.toFixed(2)} €
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-auto flex items-end justify-between gap-4 pt-5">
+            {item.allergens.length > 0 ? (
+              <div className="flex items-center gap-2">
+                {item.allergens.map((allergen) => (
+                  <div
+                    key={allergen}
+                    title={allergen}
+                    className="flex size-8 items-center justify-center rounded-full bg-[#FDF7ED] text-[#C8734D] ring-1 ring-[#F0D5C0]"
+                  >
+                    {allergenIcons[allergen]}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div />
+            )}
+
+            {item.photo_url && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsFlipped(true)}
+                className="rounded-full border-[#F0D5C0] text-[#AF4A24] hover:bg-[#FFF1E5] hover:text-[#8e3a1b]"
+              >
+                <ImageIcon className="mr-2 size-4" />
+                Ver foto
+              </Button>
+            )}
+          </div>
+        </Card>
+
+        {/* Back */}
+        {item.photo_url && (
+          <Card className={`overflow-hidden rounded-3xl border-none shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] ${isFlipped ? "relative aspect-[4/5] sm:aspect-[3/4]" : "absolute inset-0"}`}>
+            <div className="absolute inset-0 z-0">
+              <Image
+                src={item.photo_url}
+                alt={item.name}
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2C1A12]/95 via-[#2C1A12]/30 to-black/20" />
+            </div>
+
+            <CardContent className="relative z-10 flex h-full flex-col justify-between p-6 text-white">
+              <div className="flex justify-end">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsFlipped(false)}
+                  className="rounded-full bg-black/20 text-white backdrop-blur-md hover:bg-black/40 hover:text-white"
+                >
+                  <ArrowLeft className="size-5" />
+                </Button>
+              </div>
+              <div>
+                <h3 className="font-heading text-2xl font-bold leading-tight">
+                  {item.name}
+                </h3>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function MenuSection({ category }: { category: MenuCategory }) {
   return (
@@ -45,7 +147,7 @@ function MenuSection({ category }: { category: MenuCategory }) {
             </p>
           </div>
         )}
-        
+
         {category.notes && (
           <div className="flex items-start gap-3 rounded-2xl border border-[#E6B999]/30 bg-[#FDF7ED] p-5 text-sm shadow-sm">
             <Info className="mt-0.5 size-5 shrink-0 text-[#AF4A24]" />
@@ -63,52 +165,7 @@ function MenuSection({ category }: { category: MenuCategory }) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {category.items.map((item) => (
-          <Card
-            key={item.name}
-            className="overflow-hidden rounded-3xl border border-[#F0D5C0]/50 bg-white shadow-sm transition-all hover:shadow-md"
-          >
-            {item.photo_url && (
-              <div className="relative h-48 w-full overflow-hidden bg-[#FDF7ED]">
-                <Image
-                  src={item.photo_url}
-                  alt={item.name}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-            )}
-            <CardContent className="flex h-full flex-col p-6">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-heading text-xl font-bold leading-tight text-[#4A2B1D]">
-                    {item.name}
-                  </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-[#8B6453]">
-                    {item.description}
-                  </p>
-                </div>
-                <div className="shrink-0 rounded-2xl bg-[#FFF1E5] px-3.5 py-1.5 text-[#AF4A24]">
-                  <span className="whitespace-nowrap text-lg font-black tracking-tight">
-                    {item.price.toFixed(2)} €
-                  </span>
-                </div>
-              </div>
-
-              {item.allergens.length > 0 && (
-                <div className="mt-5 flex items-center gap-3 pt-1">
-                  {item.allergens.map((allergen) => (
-                    <div
-                      key={allergen}
-                      title={allergen}
-                      className="flex size-8 items-center justify-center rounded-full bg-[#FDF7ED] text-[#C8734D] ring-1 ring-[#F0D5C0]"
-                    >
-                      {allergenIcons[allergen]}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
+          <MenuItemCard key={item.name} item={item} />
         ))}
       </div>
     </section>
@@ -117,7 +174,7 @@ function MenuSection({ category }: { category: MenuCategory }) {
 
 export function MenuBrowser() {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
-  
+
   const visibleCategories =
     selectedCategory === "Todas"
       ? menuData
@@ -166,12 +223,17 @@ export function MenuBrowser() {
             Descubre el Desierto
           </h1>
           <p className="mx-auto max-w-md text-sm font-medium text-[#8B6453]">
-            Un oasis en Valladolid. Desayunos, vermú, tardeo y coctelería a tu ritmo.
+            Un oasis en Valladolid. Desayunos, vermú, tardeo y coctelería a tu
+            ritmo.
           </p>
         </div>
 
-        <div className="sticky top-[73px] z-20 -mx-5 border-y border-[#E6B999]/30 bg-[#FAFAF8]/95 px-5 py-4 backdrop-blur-xl md:-mx-8 md:px-8">
-          <div className="flex gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="sticky top-[73px] z-20 -mx-5 border-y border-[#E6B999]/30 bg-[#FAFAF8]/95 py-4 backdrop-blur-xl md:-mx-8 relative">
+          {/* Indicadores visuales de scroll para móvil */}
+          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-12 bg-gradient-to-l from-[#E6B999]/40 to-transparent md:hidden" />
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-6 bg-gradient-to-r from-[#FAFAF8] to-transparent md:hidden" />
+          
+          <div className="flex gap-2.5 overflow-x-auto px-5 pb-1 md:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {["Todas", ...menuData.map(({ category }) => category)].map(
               (category) => (
                 <button
@@ -200,7 +262,10 @@ export function MenuBrowser() {
 
         <div className="mt-16 space-y-2 border-t border-[#E6B999]/30 pb-4 pt-8 text-center text-xs font-medium text-[#8B6453]">
           <p>Precios con IVA incluido. Suplemento de terraza +0,50€.</p>
-          <p>Consulte a nuestro personal por intolerancias o alergias no marcadas en la carta.</p>
+          <p>
+            Consulte a nuestro personal por intolerancias o alergias no marcadas
+            en la carta.
+          </p>
         </div>
       </main>
     </div>

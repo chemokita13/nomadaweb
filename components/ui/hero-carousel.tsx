@@ -11,26 +11,33 @@ import {
 import Image from "next/image";
 
 const images = [
-  { id: 1, src: "/hero-1.jpg", alt: "Huevos Rotos Nómada" }, // Asigna aquí tu image_3895d4.png renombrada
-  { id: 2, src: "/hero-2.jpg", alt: "Pincho de Tortilla" }, // Asigna aquí tu image_3895b8.jpg renombrada
-  { id: 3, src: "/hero-3.jpg", alt: "Cocktails Nómada" },
+  { id: 1, src: "/desayunos/14.jpg", alt: "Desayuno Makú" },
+  { id: 4, src: "/desayunos/6.jpg", alt: "Desayuno Tuareg" },
+  { id: 2, src: "/vermu/jamon.jpg", alt: "Tabla de jamón bellota" },
+  { id: 3, src: "/copas/mojito.jpg", alt: "Ginger Mojito " },
+  { id: 5, src: "/desayunos/15.jpg", alt: "Desayuno Hadza" },
 ];
 
 export function HeroCarousel() {
   return (
     <Carousel className="w-full max-w-5xl mx-auto" opts={{ loop: true }}>
-      <CarouselContent>
+      <CarouselContent className="-ml-4">
         {images.map((img) => (
-          <CarouselItem key={img.id}>
-            <div className="relative h-[40vh] md:h-[60vh] w-full rounded-xl overflow-hidden shadow-lg">
-              {/* Fallback de color por si no hay imagen en el prototipo aún */}
-              <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-                <span className="text-neutral-500">Imagen: {img.alt}</span>
+          <CarouselItem key={img.id} className="pl-4 basis-[85%] sm:basis-2/3 md:basis-1/2 lg:basis-1/3">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-[#F0D5C0]/50 shadow-sm transition-transform duration-700 hover:scale-[1.02]">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover object-center"
+                priority={img.id === 1}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2C1A12]/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="font-heading text-2xl font-bold text-white tracking-tight drop-shadow-md">
+                  {img.alt}
+                </h3>
               </div>
-              {/* Descomenta esto cuando tengas las imágenes en /public */}
-              {/* <Image src={img.src} alt={img.alt} fill className="object-cover" priority={img.id === 1} /> */}
-              <div className="absolute inset-0 bg-black/30" />{" "}
-              {/* Overlay para contraste */}
             </div>
           </CarouselItem>
         ))}

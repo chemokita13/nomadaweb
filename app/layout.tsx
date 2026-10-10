@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "El Nómada | Valladolid",
-  description: "Desayunos, tapas, cocktails y buen ambiente en Valladolid.",
+  title: "Nómada | Valladolid",
+  description: "Desayunos - Cocktails - Batidos en Valladolid.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

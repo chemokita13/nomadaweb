@@ -247,42 +247,178 @@ export const menuData: MenuCategory[] = [
   },
   {
     category: "Cocktails",
+    note: "Suplemento de terraza +0,30€.",
     items: [
       {
-        name: "Burbujas de Pasión",
-        description: "Gin, fruta de la pasión, lima y tónica pink",
-        price: 7.0,
+        name: "Moscow Mule",
+        description:
+          "“El cocktail americano con un toque de vodka”. Smirnoff, lima y Red Bull Ginger Beer.",
+        price: 6.5,
         allergens: [],
+        alterEgo: "Con Vodka Grey Goose 7,50€",
       },
       {
-        name: "Ginger Mojito",
-        description: "Bacardí, lima, hierbabuena y Organics Ginger",
-        price: 7.0,
+        name: "Mojito",
+        description:
+          "“Hierba mala nunca muere, hierba buena … sólo para Mojitos”. Fresa y clásico. Bacardí carta blanca, lima, hierba buena y soda.",
+        price: 6.5,
         allergens: [],
         photo_url: "/copas/mojito.jpg",
       },
       {
+        name: "Daiquiri de Fresa",
+        description:
+          "“Sólo hay una manera de mejorar cualquier fruta, mezclarla con hielo y ron”. Bacardí Carta Blanca, zumo de limón y fresa natural.",
+        price: 6.5,
+        allergens: [],
+      },
+      {
+        name: "Espresso Martini",
+        description:
+          "“Al expresso agitado y frío, muy frío”. Café, Kahlúa, Smirnoff y vainilla.",
+        price: 6.5,
+        allergens: [],
+        alterEgo: "Flat White Martini con Baileys 6,50€",
+      },
+      {
+        name: "Bramble",
+        description:
+          "“El cocktail al más puro estilo -British-”. Hendriks Gin, licor de frambuesa, limón y confitura de frutos rojos.",
+        price: 6.5,
+        allergens: [],
+      },
+      {
+        name: "Burbujas de Pasión",
+        description:
+          "“El -Must- de Nómada”. Gin Tanqueray, fruta de la pasión, lima y tónica Schweppes Pink.",
+        price: 6.5,
+        allergens: [],
+        alterEgo: "Tanqueray Ten 7,50€",
+      },
+      {
+        name: "Lemon Calipo",
+        description:
+          "“El legendario helado, ahora exclusivo para adultos”. Ginebra Masters Blue y lima.",
+        price: 6.5,
+        allergens: [],
+      },
+      {
+        name: "Ginger Mojito",
+        description:
+          "“Si, Red Bull podía revolucionar el Mojito”. Bacardí Carta Blanca y Organics Ginger by Red Bull.",
+        price: 6.5,
+        allergens: [],
+      },
+      {
         name: "Piña Colada",
-        description: "Bacardí, Malibú Piña, coco y zumo",
-        price: 7.0,
+        description:
+          "“Living la Piña Loca”. Bacardí Carta Blanca, Malibú Piña, coco y zumo de piña.",
+        price: 6.5,
         allergens: ["lacteos"],
       },
     ],
   },
   {
-    category: "Cafés y Batidos",
+    category: "Batidos",
+    items: [
+      {
+        name: "Oreo",
+        description:
+          "Leche, azúcar, helado de Oreo, nata y sirope de chocolate.",
+        price: 6.0,
+        allergens: ["lacteos", "gluten"],
+      },
+      {
+        name: "Kit kat",
+        description:
+          "Leche, azúcar, helado de Kit Kat, nata y sirope de chocolate.",
+        price: 6.0,
+        allergens: ["lacteos", "gluten"],
+      },
+      {
+        name: "Fresa",
+        description:
+          "Leche, azúcar, helado de Fresa, nata y sirope de mermelada de fresa.",
+        price: 6.0,
+        allergens: ["lacteos"],
+      },
+      {
+        name: "Chocolate",
+        description:
+          "Leche, azúcar, helado de Chocolate Belga, nata y sirope de chocolate.",
+        price: 6.0,
+        allergens: ["lacteos"],
+      },
+      {
+        name: "Vainilla",
+        description:
+          "Leche, azúcar, helado de Vainilla de Madagascar, nata y sirope de galleta Lotus.",
+        price: 6.0,
+        allergens: ["lacteos", "gluten"],
+      },
+      {
+        name: "Dulce de leche",
+        description:
+          "Leche, azúcar, helado de Nata, dulce de leche y nata montada.",
+        price: 6.0,
+        allergens: ["lacteos"],
+      },
+    ],
+  },
+  {
+    category: "Helados",
+    items: [
+      {
+        name: "Oreo",
+        description:
+          "Helado de Oreo, nata, toppings de Oreo y sirope de chocolate.",
+        price: 6.0,
+        allergens: ["lacteos", "gluten"],
+      },
+      {
+        name: "Kit kat",
+        description:
+          "Helado de Kit Kat, nata, toppings de Kit Kat y sirope de chocolate.",
+        price: 6.0,
+        allergens: ["lacteos", "gluten"],
+      },
+      {
+        name: "Fresa",
+        description: "Helado de Fresa, nata y sirope de mermelada de fresa.",
+        price: 6.0,
+        allergens: ["lacteos"],
+      },
+      {
+        name: "Chocolate",
+        description:
+          "Helado de Chocolate Belga, nata, toppings de chocolate Simón Coll y sirope de chocolate.",
+        price: 6.0,
+        allergens: ["lacteos"],
+      },
+      {
+        name: "Vainilla",
+        description:
+          "Helado de Vainilla de Madagascar, nata, toppings de galleta Lotus y sirope de caramelo.",
+        price: 6.0,
+        allergens: ["lacteos", "gluten"],
+      },
+      {
+        name: "Dulce de leche",
+        description:
+          "Helado de Dulce de Leche, nata, un toque de canela, toppings de Galleta Lotus y sirope de dulce de leche.",
+        price: 6.0,
+        allergens: ["lacteos", "gluten"],
+      },
+    ],
+  },
+  {
+    category: "Cafés",
     items: [
       {
         name: "Capuccino",
         description: "Café Illy, leche, espuma y cacao",
         price: 3.5,
         allergens: ["lacteos"],
-      },
-      {
-        name: "Batido Oreo",
-        description: "Leche, helado de Oreo, nata y sirope",
-        price: 7.0,
-        allergens: ["lacteos", "gluten"],
       },
     ],
   },

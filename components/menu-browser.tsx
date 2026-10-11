@@ -50,6 +50,14 @@ function MenuItemCard({ item }: { item: MenuItem }) {
               <p className="mt-2.5 text-sm leading-relaxed text-[#8B6453]">
                 {item.description}
               </p>
+              {item.alterEgo && (
+                <div className="mt-3 inline-flex items-center gap-1.5 rounded-xl border border-[#E6B999]/40 bg-[#FDF7ED] px-2.5 py-1 text-xs font-semibold text-[#AF4A24]">
+                  <span className="font-bold uppercase tracking-wider text-[#C8734D]">
+                    Alter Ego:
+                  </span>
+                  <span>{item.alterEgo}</span>
+                </div>
+              )}
             </div>
             <div className="shrink-0 rounded-2xl bg-[#FFF1E5] px-3.5 py-1.5 text-[#AF4A24]">
               <span className="whitespace-nowrap text-lg font-black tracking-tight">

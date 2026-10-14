@@ -25,7 +25,7 @@ export const menuData: MenuCategory[] = [
   {
     category: "Desayunos",
     notes: [
-      "Todos los desayunos irán acompañados de café Illy o infusión [No están incluidos los cafés especiales]. Cola Cao o Nesquick +0,5€",
+      "Todos los desayunos irán acompañados de café Illy o infusión [No están incluidos los cafés especiales]. Cola Cao o Nesquik +0,5€",
       "Disponible leche entera, soja o sin lactosa.",
       "Todos los desayunos estarán acompañados de una brocheta de frutas de Temporada y nueces.",
       "Todos los desayunos estarán acompañados de zumo de naranja natural o yogurth bebible.",

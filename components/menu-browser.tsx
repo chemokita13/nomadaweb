@@ -144,7 +144,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
             </div>
 
             <CardContent className="relative z-10 flex h-full flex-col justify-between p-6 text-white">
-              <div className="flex justify-end">
+              <div className="flex items-start justify-between">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -153,6 +153,11 @@ function MenuItemCard({ item }: { item: MenuItem }) {
                 >
                   <ArrowLeft className="size-5" />
                 </Button>
+                <div className="rounded-2xl bg-black/25 px-3.5 py-1.5 backdrop-blur-md">
+                  <span className="whitespace-nowrap text-lg font-black tracking-tight text-white">
+                    {item.price.toFixed(2)} €
+                  </span>
+                </div>
               </div>
               <div>
                 <h3 className="font-heading text-2xl font-bold leading-tight">

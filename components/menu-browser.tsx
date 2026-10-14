@@ -190,12 +190,12 @@ export function MenuBrowser() {
 
   return (
     <div className="min-h-screen bg-[#FAFAF8] pb-16 text-[#4A2B1D]">
-      <header className="sticky top-0 z-30 flex items-center justify-between border-b border-[#E6B999]/30 bg-[#FAFAF8]/80 px-5 py-4 shadow-sm backdrop-blur-xl">
+      <header className="sticky top-0 z-30 flex h-[72px] items-center justify-between border-b border-[#E6B999]/30 bg-[#FAFAF8] px-5 shadow-sm">
         <Link href="/" aria-label="Volver al inicio">
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-full text-[#AF4A24] hover:bg-[#F0D5C0]/30 hover:text-[#AF4A24]"
+            className="size-10 rounded-full text-[#AF4A24] hover:bg-[#F0D5C0]/30 hover:text-[#AF4A24]"
           >
             <ArrowLeft className="size-5" />
           </Button>
@@ -236,7 +236,7 @@ export function MenuBrowser() {
           </p>
         </div>
 
-        <div className="sticky top-[73px] z-20 -mx-5 border-y border-[#E6B999]/30 bg-[#FAFAF8]/95 py-4 backdrop-blur-xl md:-mx-8 relative">
+        <div className="sticky top-[71px] z-20 -mx-5 border-y border-[#E6B999]/30 bg-[#FAFAF8] py-4 md:-mx-8">
           {/* Indicadores visuales de scroll para móvil */}
           <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-12 bg-gradient-to-l from-[#E6B999]/40 to-transparent md:hidden" />
           <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-6 bg-gradient-to-r from-[#FAFAF8] to-transparent md:hidden" />

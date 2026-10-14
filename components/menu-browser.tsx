@@ -30,6 +30,45 @@ const allergenIcons: Record<Allergen, React.ReactNode> = {
   frutos_secos: <Nut className="size-4" aria-label="Frutos secos" />,
 };
 
+const allergenLabels: Record<Allergen, string> = {
+  gluten: "gluten",
+  lacteos: "lácteos",
+  huevo: "huevo",
+  pescado: "pescado",
+  frutos_secos: "frutos secos",
+};
+
+function AllergenBadge({ allergen }: { allergen: Allergen }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex size-8 items-center justify-center rounded-full bg-[#FDF7ED] text-[#C8734D] ring-1 ring-[#F0D5C0] transition-colors hover:bg-[#F0D5C0]/50"
+        aria-label={`Contiene ${allergenLabels[allergen]}`}
+      >
+        {allergenIcons[allergen]}
+      </button>
+      {open && (
+        <>
+          {/* Overlay invisible para cerrar al tocar fuera */}
+          <div
+            className="fixed inset-0 z-40"
+            onClick={() => setOpen(false)}
+          />
+          <div className="absolute bottom-full left-1/2 z-50 mb-2 -translate-x-1/2 whitespace-nowrap rounded-xl border border-[#E6B999]/40 bg-[#2C1A12] px-3 py-1.5 text-xs font-semibold text-white shadow-lg">
+            Contiene {allergenLabels[allergen]}
+            {/* Flechita */}
+            <div className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-[#2C1A12]" />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function MenuItemCard({ item }: { item: MenuItem }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -70,13 +109,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
             {item.allergens.length > 0 ? (
               <div className="flex items-center gap-2">
                 {item.allergens.map((allergen) => (
-                  <div
-                    key={allergen}
-                    title={allergen}
-                    className="flex size-8 items-center justify-center rounded-full bg-[#FDF7ED] text-[#C8734D] ring-1 ring-[#F0D5C0]"
-                  >
-                    {allergenIcons[allergen]}
-                  </div>
+                  <AllergenBadge key={allergen} allergen={allergen} />
                 ))}
               </div>
             ) : (
